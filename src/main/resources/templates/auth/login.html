@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/default :: layout(~{::title}, ~{::section}, ~{})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<section class="container">
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col-6">
+            <div class="card">
+                <div th:text="#{auth.login.form.title}" class="card-header">Register</div>
+                <div class="card-body">
+                    <div th:text="#{auth.login.error}" th:if="${param.error}" class="alert alert-danger" role="alert">
+                        Invalid username and password.
+                    </div>
+                    <div th:text="#{auth.logout.info}" th:if="${param.logout}" class="alert alert-info" role="alert">
+                        You have been logged out.
+                    </div>
+
+                    <form th:action="@{/login}" method="post">
+
+                        <div class="form-group row">
+                            <label th:text="#{auth.field.username}"
+                                   for="username"
+                                   class="col-3 col-form-label">Login</label>
+                            <div class="col">
+                                <input type="text"
+                                       class="form-control"
+                                       id="username"
+                                       name="username">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label th:text="#{auth.field.password}"
+                                   for="password"
+                                   class="col-3 col-form-label">Password</label>
+                            <div class="col">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password">
+                            </div>
+                        </div>
+
+                        <button th:text="#{auth.login.button.submit}"
+                                type="submit"
+                                class="btn btn-primary">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>
