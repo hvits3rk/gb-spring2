@@ -39,6 +39,7 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     public FlowDefinitionRegistry flowRegistry() {
         return getFlowDefinitionRegistryBuilder(flowBuilderServices())
                 .addFlowLocationPattern("classpath:flows/**/*-flow.xml")
+                .addFlowLocation("")
                 .build();
     }
 
