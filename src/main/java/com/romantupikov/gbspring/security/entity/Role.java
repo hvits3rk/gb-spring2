@@ -1,6 +1,9 @@
 package com.romantupikov.gbspring.security.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;

@@ -5,7 +5,7 @@
 
     <groupId>com.romantupikov</groupId>
     <artifactId>gbspring</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>18.08</version>
     <packaging>jar</packaging>
 
     <name>gbspring</name>
@@ -24,8 +24,19 @@
         <java.version>1.8</java.version>
         <postgres.version>42.2.4</postgres.version>
         <assertj.version>3.10.0</assertj.version>
-        <spring-web-flow.version>2.5.0.RELEASE</spring-web-flow.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -46,11 +57,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -58,17 +64,12 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-webflow</artifactId>
-            <version>${spring-web-flow.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>wsdl4j</groupId>
-            <artifactId>wsdl4j</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -103,32 +104,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaDirectory>
-                        ${project.basedir}/src/main/resources/
-                    </schemaDirectory>
-                    <outputDirectory>
-                        ${project.basedir}/src/main/java
-                    </outputDirectory>
-                    <clearOutputDir>
-                        false
-                    </clearOutputDir>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
 
 </project>
