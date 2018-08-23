@@ -20,12 +20,14 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void register(User user) {
+    public User register(User user) {
         if (user.getRoles().isEmpty()) {
             user.getRoles().add(roleService.getBasicRole());
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+
+        return user;
     }
 
 }
